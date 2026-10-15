@@ -1,0 +1,6 @@
+{
+  "title": "开会",
+  "due_at": "2026-10-16T09:00:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "idempotency_key": "example-meeting-2026-10-16"
+}

@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:health.summary",
+  "title": "health.summary",
+  "$ref": "#/$defs/input",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "end": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "period"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "end": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        },
+        "steps": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sleep_hours": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "workout_minutes": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "workouts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "duration_minutes": {
+                "type": "number",
+                "minimum": 0
+              },
+              "distance_m": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "ended_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "id",
+              "duration_minutes",
+              "distance_m",
+              "ended_at"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        },
+        "availability": {
+          "type": "string",
+          "enum": [
+            "available",
+            "partial",
+            "unknown"
+          ]
+        },
+        "missing_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "period",
+        "steps",
+        "sleep_hours",
+        "workout_minutes",
+        "workouts",
+        "availability",
+        "missing_reason"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:permission-policy",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "tools": {
+      "type": "object",
+      "properties": {
+        "weather.forecast": {
+          "type": "object",
+          "properties": {
+            "risk": {
+              "type": "string",
+              "enum": [
+                "readOnly",
+                "localWrite",
+                "externalAction",
+                "sensitive"
+              ]
+            },
+            "scopes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100
+            },
+            "confirmation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "risk",
+            "scopes",
+            "confirmation"
+          ],
+          "additionalProperties": false
+        },
+        "maps.search": {
+          "type": "object",
+          "properties": {
+            "risk": {
+              "type": "string",
+              "enum": [
+                "readOnly",
+                "localWrite",
+                "externalAction",
+                "sensitive"
+              ]
+            },
+            "scopes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100
+            },
+            "confirmation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "risk",
+            "scopes",
+            "confirmation"
+          ],
+          "additionalProperties": false
+        },
+        "maps.navigate": {
+          "type": "object",
+          "properties": {
+            "risk": {
+              "type": "string",
+              "enum": [
+                "readOnly",
+                "localWrite",
+                "externalAction",
+                "sensitive"
+              ]
+            },
+            "scopes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100
+            },
+            "confirmation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "risk",
+            "scopes",
+            "confirmation"
+          ],
+          "additionalProperties": false
+        },
+        "health.summary": {
+          "type": "object",
+          "properties": {
+            "risk": {
+              "type": "string",
+              "enum": [
+                "readOnly",
+                "localWrite",
+                "externalAction",
+                "sensitive"
+              ]
+            },
+            "scopes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100
+            },
+            "confirmation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "risk",
+            "scopes",
+            "confirmation"
+          ],
+          "additionalProperties": false
+        },
+        "calendar.events": {
+          "type": "object",
+          "properties": {
+            "risk": {
+              "type": "string",
+              "enum": [
+                "readOnly",
+                "localWrite",
+                "externalAction",
+                "sensitive"
+              ]
+            },
+            "scopes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100
+            },
+            "confirmation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "risk",
+            "scopes",
+            "confirmation"
+          ],
+          "additionalProperties": false
+        },
+        "reminders.create": {
+          "type": "object",
+          "properties": {
+            "risk": {
+              "type": "string",
+              "enum": [
+                "readOnly",
+                "localWrite",
+                "externalAction",
+                "sensitive"
+              ]
+            },
+            "scopes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 100
+            },
+            "confirmation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "risk",
+            "scopes",
+            "confirmation"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "weather.forecast",
+        "maps.search",
+        "maps.navigate",
+        "health.summary",
+        "calendar.events",
+        "reminders.create"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract_version",
+    "tools"
+  ],
+  "additionalProperties": false
+}

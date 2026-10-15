@@ -1,0 +1,134 @@
+{
+  "contract_version": "1.0",
+  "app": "东少",
+  "trace_id": "3f9d66df-0b14-45e7-a33a-ab69bc94cf6a",
+  "planner": "offline_rules",
+  "status": "pending_confirmation",
+  "message": "操作已准备好，请核对参数并明确确认；尚未执行外部动作或写入。",
+  "assessment": {
+    "recommendation": "consider_easy_run",
+    "reasons": [
+      "所查白天天气与演示/授权睡眠指标未触发预设阈值，可按体感考虑轻松跑"
+    ],
+    "scope": "白天概览；非诊断建议，不含空气质量/路况，出发前复查"
+  },
+  "tool_results": [
+    {
+      "contract_version": "1.0",
+      "trace_id": "3f9d66df-0b14-45e7-a33a-ab69bc94cf6a",
+      "call_id": "rule-1",
+      "tool": "weather.forecast",
+      "status": "ok",
+      "data": {
+        "date": "2026-10-15",
+        "temperature_c": 21.0,
+        "precipitation_probability": 15,
+        "wind_kph": 8.0,
+        "condition": "演示：多云",
+        "coverage": "daytime"
+      },
+      "error": null,
+      "source": "mock_ios",
+      "is_mock": true,
+      "collected_at": "2026-10-15T08:00:00+08:00"
+    },
+    {
+      "contract_version": "1.0",
+      "trace_id": "3f9d66df-0b14-45e7-a33a-ab69bc94cf6a",
+      "call_id": "rule-2",
+      "tool": "health.summary",
+      "status": "ok",
+      "data": {
+        "period": {
+          "start": "2026-10-15T00:00:00+08:00",
+          "end": "2026-10-16T00:00:00+08:00"
+        },
+        "steps": 4200,
+        "sleep_hours": 7.3,
+        "workout_minutes": 25.0,
+        "workouts": [
+          {
+            "id": "mock-workout-1",
+            "duration_minutes": 25.0,
+            "distance_m": 3500.0,
+            "ended_at": "2026-10-15T08:00:00+08:00"
+          }
+        ],
+        "availability": "available",
+        "missing_reason": null
+      },
+      "error": null,
+      "source": "mock_ios",
+      "is_mock": true,
+      "collected_at": "2026-10-15T08:00:00+08:00"
+    },
+    {
+      "contract_version": "1.0",
+      "trace_id": "3f9d66df-0b14-45e7-a33a-ab69bc94cf6a",
+      "call_id": "rule-3",
+      "tool": "maps.search",
+      "status": "ok",
+      "data": {
+        "candidates": [
+          {
+            "id": "mock-park-1",
+            "name": "演示公园（非真实搜索）",
+            "location": {
+              "latitude": 31.23,
+              "longitude": 121.47,
+              "coordinate_system": "wgs84"
+            },
+            "address": "Mock 地点，仅用于契约测试",
+            "distance_m": 500.0
+          }
+        ]
+      },
+      "error": null,
+      "source": "mock_ios",
+      "is_mock": true,
+      "collected_at": "2026-10-15T08:00:00+08:00"
+    },
+    {
+      "contract_version": "1.0",
+      "trace_id": "3f9d66df-0b14-45e7-a33a-ab69bc94cf6a",
+      "call_id": "rule-4",
+      "tool": "maps.navigate",
+      "status": "pending_confirmation",
+      "data": {
+        "action": {
+          "type": "open_navigation",
+          "provider": "amap",
+          "uri": "iosamap://path?sourceApplication=%E4%B8%9C%E5%B0%91&dlat=31.23&dlon=121.47&dname=%E6%BC%94%E7%A4%BA%E5%85%AC%E5%9B%AD%EF%BC%88%E9%9D%9E%E7%9C%9F%E5%AE%9E%E6%90%9C%E7%B4%A2%EF%BC%89&dev=1&t=2&m=0",
+          "fallback_uri": "https://maps.apple.com/?daddr=31.23%2C121.47&dirflg=w",
+          "destination": "演示公园（非真实搜索）",
+          "place_id": "mock-park-1",
+          "coordinate_system": "wgs84",
+          "requires_confirmation": true,
+          "opened": false,
+          "mode": "walking",
+          "execution": "proposal"
+        }
+      },
+      "error": null,
+      "source": "mock_ios",
+      "is_mock": true,
+      "collected_at": "2026-10-15T08:00:00+08:00"
+    }
+  ],
+  "actions": [
+    {
+      "type": "open_navigation",
+      "provider": "amap",
+      "uri": "iosamap://path?sourceApplication=%E4%B8%9C%E5%B0%91&dlat=31.23&dlon=121.47&dname=%E6%BC%94%E7%A4%BA%E5%85%AC%E5%9B%AD%EF%BC%88%E9%9D%9E%E7%9C%9F%E5%AE%9E%E6%90%9C%E7%B4%A2%EF%BC%89&dev=1&t=2&m=0",
+      "fallback_uri": "https://maps.apple.com/?daddr=31.23%2C121.47&dirflg=w",
+      "destination": "演示公园（非真实搜索）",
+      "place_id": "mock-park-1",
+      "coordinate_system": "wgs84",
+      "requires_confirmation": true,
+      "opened": false,
+      "mode": "walking",
+      "execution": "proposal"
+    }
+  ],
+  "contains_mock_data": true
+}

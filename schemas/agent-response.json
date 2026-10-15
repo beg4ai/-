@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:agent-response",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "app": {
+      "type": "string",
+      "const": "东少"
+    },
+    "trace_id": {
+      "type": "string"
+    },
+    "planner": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "pending_confirmation",
+        "needs_selection",
+        "cancelled",
+        "error"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "assessment": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "recommendation": {
+          "type": "string",
+          "enum": [
+            "insufficient_data",
+            "caution",
+            "limited_data",
+            "consider_easy_run"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "recommendation",
+        "reasons",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "tool_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "1.0"
+          },
+          "trace_id": {
+            "type": "string"
+          },
+          "call_id": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "pending_confirmation",
+              "needs_selection",
+              "denied",
+              "cancelled",
+              "error",
+              "unavailable"
+            ]
+          },
+          "data": {
+            "type": "object"
+          },
+          "error": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "retryable": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "retryable"
+            ],
+            "additionalProperties": false
+          },
+          "source": {
+            "type": "string"
+          },
+          "is_mock": {
+            "type": "boolean"
+          },
+          "collected_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "contract_version",
+          "trace_id",
+          "call_id",
+          "tool",
+          "status",
+          "data",
+          "error",
+          "source",
+          "is_mock",
+          "collected_at"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "open_navigation"
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "amap",
+              "apple_maps"
+            ]
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri"
+          },
+          "fallback_uri": {
+            "type": "string",
+            "format": "uri"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "place_id": {
+            "type": "string"
+          },
+          "coordinate_system": {
+            "type": "string",
+            "enum": [
+              "wgs84",
+              "gcj02"
+            ]
+          },
+          "requires_confirmation": {
+            "type": "boolean"
+          },
+          "opened": {
+            "type": "boolean"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "execution": {
+            "type": "string",
+            "enum": [
+              "proposal",
+              "approved_not_opened",
+              "opened"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "provider",
+          "uri",
+          "fallback_uri",
+          "destination",
+          "place_id",
+          "coordinate_system",
+          "requires_confirmation",
+          "opened",
+          "mode",
+          "execution"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "contains_mock_data": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "contract_version",
+    "app",
+    "trace_id",
+    "planner",
+    "status",
+    "message",
+    "assessment",
+    "tool_results",
+    "actions",
+    "contains_mock_data"
+  ],
+  "additionalProperties": false
+}

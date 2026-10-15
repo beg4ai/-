@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:tool-result",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "trace_id": {
+      "type": "string"
+    },
+    "call_id": {
+      "type": "string"
+    },
+    "tool": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "pending_confirmation",
+        "needs_selection",
+        "denied",
+        "cancelled",
+        "error",
+        "unavailable"
+      ]
+    },
+    "data": {
+      "type": "object"
+    },
+    "error": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "retryable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "string"
+    },
+    "is_mock": {
+      "type": "boolean"
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "contract_version",
+    "trace_id",
+    "call_id",
+    "tool",
+    "status",
+    "data",
+    "error",
+    "source",
+    "is_mock",
+    "collected_at"
+  ],
+  "additionalProperties": false
+}

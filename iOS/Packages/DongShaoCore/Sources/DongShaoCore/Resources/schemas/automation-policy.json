@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:automation-policy",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "timezone": {
+      "type": "string",
+      "const": "Asia/Shanghai"
+    },
+    "quiet_start": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 23
+    },
+    "quiet_end": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 23
+    },
+    "cooldown_minutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1440
+    },
+    "max_event_attempts": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "stale_event_hours": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 168
+    },
+    "rain_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "wind_threshold_kph": {
+      "type": "number",
+      "minimum": 0
+    },
+    "running_min_c": {
+      "type": "number"
+    },
+    "running_max_c": {
+      "type": "number"
+    },
+    "minimum_sleep_hours": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 24
+    }
+  },
+  "required": [
+    "contract_version",
+    "timezone",
+    "quiet_start",
+    "quiet_end",
+    "cooldown_minutes",
+    "max_event_attempts",
+    "stale_event_hours",
+    "rain_threshold",
+    "wind_threshold_kph",
+    "running_min_c",
+    "running_max_c",
+    "minimum_sleep_hours"
+  ],
+  "additionalProperties": false
+}

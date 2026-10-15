@@ -1,0 +1,14 @@
+{
+  "contract_version": "1.0",
+  "timezone": "Asia/Shanghai",
+  "quiet_start": 22,
+  "quiet_end": 7,
+  "cooldown_minutes": 90,
+  "max_event_attempts": 3,
+  "stale_event_hours": 6,
+  "rain_threshold": 60,
+  "wind_threshold_kph": 30,
+  "running_min_c": 0,
+  "running_max_c": 30,
+  "minimum_sleep_hours": 6
+}

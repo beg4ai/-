@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:reminders.create",
+  "title": "reminders.create",
+  "$ref": "#/$defs/input",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "due_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "idempotency_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "title",
+        "due_at",
+        "timezone",
+        "idempotency_key"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "due_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "simulated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "due_at",
+        "timezone",
+        "simulated"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

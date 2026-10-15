@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:weather.forecast",
+  "title": "weather.forecast",
+  "$ref": "#/$defs/input",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "longitude": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "coordinate_system": {
+              "type": "string",
+              "enum": [
+                "wgs84",
+                "gcj02"
+              ]
+            }
+          },
+          "required": [
+            "latitude",
+            "longitude",
+            "coordinate_system"
+          ],
+          "additionalProperties": false
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "location",
+        "date"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "temperature_c": {
+          "type": "number"
+        },
+        "precipitation_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "wind_kph": {
+          "type": "number",
+          "minimum": 0
+        },
+        "condition": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "string",
+          "enum": [
+            "daytime",
+            "full_day"
+          ]
+        },
+        "cache_status": {
+          "type": "string",
+          "enum": [
+            "fresh",
+            "cached",
+            "stale"
+          ]
+        }
+      },
+      "required": [
+        "date",
+        "temperature_c",
+        "precipitation_probability",
+        "wind_kph",
+        "condition",
+        "coverage"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

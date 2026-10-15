@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:tool-manifest",
+  "$defs": {
+    "tool": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 100
+        },
+        "input_schema": {
+          "type": "string"
+        },
+        "output_schema": {
+          "type": "string"
+        },
+        "risk": {
+          "type": "string",
+          "enum": [
+            "readOnly",
+            "localWrite",
+            "externalAction",
+            "sensitive"
+          ]
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100
+        },
+        "requires_foreground": {
+          "type": "boolean"
+        },
+        "requires_network": {
+          "type": "boolean"
+        },
+        "requires_confirmation": {
+          "type": "boolean"
+        },
+        "supported_os": {
+          "type": "object",
+          "properties": {
+            "ios": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ios"
+          ],
+          "additionalProperties": false
+        },
+        "fallback": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timeout": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 120
+        },
+        "idempotency_key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "input_schema",
+        "output_schema",
+        "risk",
+        "permissions",
+        "requires_foreground",
+        "requires_network",
+        "requires_confirmation",
+        "supported_os",
+        "fallback",
+        "timeout",
+        "idempotency_key"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+          },
+          "input_schema": {
+            "type": "string"
+          },
+          "output_schema": {
+            "type": "string"
+          },
+          "risk": {
+            "type": "string",
+            "enum": [
+              "readOnly",
+              "localWrite",
+              "externalAction",
+              "sensitive"
+            ]
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 100
+          },
+          "requires_foreground": {
+            "type": "boolean"
+          },
+          "requires_network": {
+            "type": "boolean"
+          },
+          "requires_confirmation": {
+            "type": "boolean"
+          },
+          "supported_os": {
+            "type": "object",
+            "properties": {
+              "ios": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ios"
+            ],
+            "additionalProperties": false
+          },
+          "fallback": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timeout": {
+            "type": "number",
+            "minimum": 0.01,
+            "maximum": 120
+          },
+          "idempotency_key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "input_schema",
+          "output_schema",
+          "risk",
+          "permissions",
+          "requires_foreground",
+          "requires_network",
+          "requires_confirmation",
+          "supported_os",
+          "fallback",
+          "timeout",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "contract_version",
+    "tools"
+  ],
+  "additionalProperties": false
+}

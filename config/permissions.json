@@ -1,0 +1,45 @@
+{
+  "contract_version": "1.0",
+  "tools": {
+    "weather.forecast": {
+      "risk": "readOnly",
+      "scopes": [
+        "location.share"
+      ],
+      "confirmation": false
+    },
+    "maps.search": {
+      "risk": "readOnly",
+      "scopes": [
+        "location.share"
+      ],
+      "confirmation": false
+    },
+    "maps.navigate": {
+      "risk": "externalAction",
+      "scopes": [],
+      "confirmation": true
+    },
+    "health.summary": {
+      "risk": "readOnly",
+      "scopes": [
+        "health.read"
+      ],
+      "confirmation": false
+    },
+    "calendar.events": {
+      "risk": "readOnly",
+      "scopes": [
+        "calendar.read"
+      ],
+      "confirmation": false
+    },
+    "reminders.create": {
+      "risk": "localWrite",
+      "scopes": [
+        "reminders.write"
+      ],
+      "confirmation": true
+    }
+  }
+}

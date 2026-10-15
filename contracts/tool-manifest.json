@@ -1,0 +1,111 @@
+{
+  "contract_version": "1.0",
+  "tools": [
+    {
+      "name": "weather.forecast",
+      "input_schema": "urn:dongshao:v1:weather.forecast#/$defs/input",
+      "output_schema": "urn:dongshao:v1:weather.forecast#/$defs/output",
+      "risk": "readOnly",
+      "permissions": [
+        "location.share"
+      ],
+      "requires_foreground": false,
+      "requires_network": true,
+      "requires_confirmation": false,
+      "supported_os": {
+        "ios": "17.0"
+      },
+      "fallback": "marked_cached_forecast",
+      "timeout": 20,
+      "idempotency_key": null
+    },
+    {
+      "name": "maps.search",
+      "input_schema": "urn:dongshao:v1:maps.search#/$defs/input",
+      "output_schema": "urn:dongshao:v1:maps.search#/$defs/output",
+      "risk": "readOnly",
+      "permissions": [
+        "location.share"
+      ],
+      "requires_foreground": false,
+      "requires_network": true,
+      "requires_confirmation": false,
+      "supported_os": {
+        "ios": "17.0"
+      },
+      "fallback": null,
+      "timeout": 20,
+      "idempotency_key": null
+    },
+    {
+      "name": "maps.navigate",
+      "input_schema": "urn:dongshao:v1:maps.navigate#/$defs/input",
+      "output_schema": "urn:dongshao:v1:maps.navigate#/$defs/output",
+      "risk": "externalAction",
+      "permissions": [],
+      "requires_foreground": true,
+      "requires_network": false,
+      "requires_confirmation": true,
+      "supported_os": {
+        "ios": "17.0"
+      },
+      "fallback": "apple_maps",
+      "timeout": 20,
+      "idempotency_key": null
+    },
+    {
+      "name": "health.summary",
+      "input_schema": "urn:dongshao:v1:health.summary#/$defs/input",
+      "output_schema": "urn:dongshao:v1:health.summary#/$defs/output",
+      "risk": "readOnly",
+      "permissions": [
+        "health.read"
+      ],
+      "requires_foreground": false,
+      "requires_network": false,
+      "requires_confirmation": false,
+      "supported_os": {
+        "ios": "17.0"
+      },
+      "fallback": null,
+      "timeout": 20,
+      "idempotency_key": null
+    },
+    {
+      "name": "calendar.events",
+      "input_schema": "urn:dongshao:v1:calendar.events#/$defs/input",
+      "output_schema": "urn:dongshao:v1:calendar.events#/$defs/output",
+      "risk": "readOnly",
+      "permissions": [
+        "calendar.read"
+      ],
+      "requires_foreground": false,
+      "requires_network": false,
+      "requires_confirmation": false,
+      "supported_os": {
+        "ios": "17.0"
+      },
+      "fallback": null,
+      "timeout": 20,
+      "idempotency_key": null
+    },
+    {
+      "name": "reminders.create",
+      "input_schema": "urn:dongshao:v1:reminders.create#/$defs/input",
+      "output_schema": "urn:dongshao:v1:reminders.create#/$defs/output",
+      "risk": "localWrite",
+      "permissions": [
+        "reminders.write"
+      ],
+      "requires_foreground": false,
+      "requires_network": false,
+      "requires_confirmation": true,
+      "supported_os": {
+        "ios": "17.0"
+      },
+      "fallback": null,
+      "timeout": 20,
+      "idempotency_key": "idempotency_key"
+    }
+  ]
+}

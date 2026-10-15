@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:maps.search",
+  "title": "maps.search",
+  "$ref": "#/$defs/input",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "longitude": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "coordinate_system": {
+              "type": "string",
+              "enum": [
+                "wgs84",
+                "gcj02"
+              ]
+            }
+          },
+          "required": [
+            "latitude",
+            "longitude",
+            "coordinate_system"
+          ],
+          "additionalProperties": false
+        },
+        "radius_m": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 50000
+        }
+      },
+      "required": [
+        "query",
+        "location",
+        "radius_m"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string"
+              },
+              "location": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180
+                  },
+                  "coordinate_system": {
+                    "type": "string",
+                    "enum": [
+                      "wgs84",
+                      "gcj02"
+                    ]
+                  }
+                },
+                "required": [
+                  "latitude",
+                  "longitude",
+                  "coordinate_system"
+                ],
+                "additionalProperties": false
+              },
+              "address": {
+                "type": "string"
+              },
+              "distance_m": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "location",
+              "address",
+              "distance_m"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "candidates"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dongshao:v1:workflow-report",
+  "type": "object",
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "report_id": {
+      "type": "string"
+    },
+    "workflow": {
+      "type": "string",
+      "enum": [
+        "morning_brief",
+        "leaving_home",
+        "workout_analysis",
+        "daily_review"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "duplicate",
+        "retry_pending",
+        "failed"
+      ]
+    },
+    "trace_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "tool_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "1.0"
+          },
+          "trace_id": {
+            "type": "string"
+          },
+          "call_id": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "pending_confirmation",
+              "needs_selection",
+              "denied",
+              "cancelled",
+              "error",
+              "unavailable"
+            ]
+          },
+          "data": {
+            "type": "object"
+          },
+          "error": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "retryable": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "retryable"
+            ],
+            "additionalProperties": false
+          },
+          "source": {
+            "type": "string"
+          },
+          "is_mock": {
+            "type": "boolean"
+          },
+          "collected_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "contract_version",
+          "trace_id",
+          "call_id",
+          "tool",
+          "status",
+          "data",
+          "error",
+          "source",
+          "is_mock",
+          "collected_at"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 100
+    },
+    "assessment": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "recommendation": {
+          "type": "string",
+          "enum": [
+            "insufficient_data",
+            "caution",
+            "limited_data",
+            "consider_easy_run"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "recommendation",
+        "reasons",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "notification": {
+      "type": "object",
+      "properties": {
+        "should_notify": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "delivered": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "should_notify",
+        "reason",
+        "delivered"
+      ],
+      "additionalProperties": false
+    },
+    "contains_mock_data": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "contract_version",
+    "report_id",
+    "workflow",
+    "status",
+    "trace_id",
+    "created_at",
+    "summary",
+    "tool_results",
+    "assessment",
+    "notification",
+    "contains_mock_data"
+  ],
+  "additionalProperties": false
+}

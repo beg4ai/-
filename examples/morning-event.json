@@ -1,0 +1,8 @@
+{
+  "contract_version": "1.0",
+  "id": "alarm-example-2026-10-15",
+  "type": "alarm.stopped",
+  "occurred_at": "2026-10-15T08:00:00+08:00",
+  "received_at": "2026-10-15T08:00:01+08:00",
+  "payload": {}
+}
